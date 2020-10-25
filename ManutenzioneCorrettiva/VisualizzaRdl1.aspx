@@ -1,0 +1,187 @@
+<%@ Page language="c#" Codebehind="VisualizzaRdl1.aspx.cs" AutoEventWireup="false" Inherits="TheSite.ManutenzioneCorretiva.VisualizzaRdl1" %>
+<%@ Register TagPrefix="uc1" TagName="PageTitle" Src="../WebControls/PageTitle.ascx" %>
+<%@ Register TagPrefix="cc1" Namespace="S_Controls" Assembly="S_Controls" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+	<HEAD>
+		<title>VisualizzaRdl</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="CODE_LANGUAGE" content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<LINK rel="stylesheet" type="text/css" href="../Css/MainSheet.css">
+		<script language="javascript">
+		function Stampa()
+		{
+			document.getElementById("btnsNuova").style.display="none"; 
+			document.getElementById("cmdApprova").style.display="none";  
+			document.getElementById("btnModificaRDL").style.display="none";  
+			
+			document.getElementById("btstampa").style.display="none";  
+			window.print();
+			document.getElementById("btnsNuova").style.display="block"; 
+			document.getElementById("cmdApprova").style.display="block";  
+			document.getElementById("btnModificaRDL").style.display="block";  
+			
+			document.getElementById("btstampa").style.display="block"; 
+		}
+		</script>
+	</HEAD>
+	<body bottomMargin="0" leftMargin="5" rightMargin="0" onbeforeunload="parent.left.valorizza()"
+		topMargin="0" MS_POSITIONING="GridLayout">
+		<form id="Form1" method="post" runat="server">
+			<TABLE style="Z-INDEX: 101; LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px" id="TableMain"
+				border="0" cellSpacing="0" cellPadding="0" width="100%" align="center">
+				<TR>
+					<TD colSpan="2" align="center"><uc1:pagetitle id="PageTitle1" runat="server"></uc1:pagetitle></TD>
+				</TR>
+				<tr>
+					<td>
+						<table width="90%" align="center">
+							<TR>
+								<TD style="HEIGHT: 1%" vAlign="top" colSpan="2" align="left">
+									<hr SIZE="1" noShade>
+								</TD>
+							</TR>
+							<TR>
+								<TD colSpan="2">
+									<TABLE id="tblSearch100" border="0" cellSpacing="1" cellPadding="1">
+										<TR>
+											<TD colSpan="8" align="center"></TD>
+										</TR>
+										<TR>
+											<TD class="Title" colSpan="1" style="WIDTH: 50px">Operatore:</TD>
+											<TD colSpan="7"><asp:label id="lblOperatore" runat="server"></asp:label></TD>
+										</TR>
+										<TR>
+											<TD class="Title" colSpan="1" style="WIDTH: 50px">Data creazione:</TD>
+											<td colSpan="7"><asp:label id="lblData" runat="server"></asp:label>
+												<asp:label id="lblOra" runat="server"></asp:label></td>
+										</TR>
+										<tr>
+											<TD class="Title" colSpan="1" style="WIDTH: 50px">Richiedente:</TD>
+											<td colSpan="7"><asp:label id="lblRichiedente" runat="server"></asp:label></td>
+										</tr>
+									</TABLE>
+								</TD>
+							</TR>
+							<TR>
+								<TD align="center" colSpan="2">&nbsp;</TD>
+							</TR>
+							<TR>
+								<td colSpan="2">
+									<DIV style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid">
+										<TABLE border="0" cellSpacing="1" cellPadding="1" width="100%">
+											<TBODY>
+												<tr>
+													<TD class="TitleSearch" vAlign="middle" colSpan="4">DATI UBICAZIONE:</TD>
+												</tr>
+												<TR>
+													<TD width="216" style="WIDTH: 216px">
+														CENTRALE:</TD>
+													<TD width="25%"><asp:label id="lblCodiceEdificio" runat="server"></asp:label></TD>
+													<TD width="25%">DENOMINAZIONE:</TD>
+													<TD><asp:label id="lblDenominazione" runat="server"></asp:label></TD>
+												</TR>
+												<TR>
+													<TD style="WIDTH: 216px">INDIRIZZO:</TD>
+													<TD><asp:label id="lblIndirizzo" runat="server"></asp:label></TD>
+													<TD>COMUNE:</TD>
+													<TD>
+														<asp:label id="lblComune" runat="server"></asp:label></TD>
+												</TR>
+												<TR>
+													<TD style="WIDTH: 216px; HEIGHT: 13px">DITTA:</TD>
+													<TD style="HEIGHT: 13px">
+														<asp:label id="lblDitta" runat="server"></asp:label></TD>
+													<TD style="HEIGHT: 13px"></TD>
+													<TD style="HEIGHT: 13px"></TD>
+												</TR>
+											</TBODY>
+										</TABLE>
+									</DIV>
+								</td>
+							</TR>
+							<TR>
+								<td colSpan="2">
+									<DIV style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid">
+										<TABLE border="0" cellSpacing="1" cellPadding="1" width="100%">
+											<tr>
+												<TD class="TitleSearch" vAlign="middle" colSpan="4">DATI RICHIESTA</TD>
+											</tr>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">DESCRIZIONE PROBLEMA/NOTE:</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" colSpan="3"><asp:label id="lblDescrizione" runat="server" Width="448px"></asp:label></TD>
+											</TR>
+											<TR style="DISPLAY:NONE">
+												<TD style="WIDTH: 216px; HEIGHT: 13px">ATTIVITA' OPERATIVE:</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" colSpan="3"><asp:label id="lblattoperative" runat="server" Width="568px"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">TIPO MANUTENZIONE:</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px"><asp:label id="lbltipomanutenzione" runat="server" Width="224px"></asp:label></TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">PRIORITA':</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px"><asp:label id="lblUrgenza" runat="server" Width="200px"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">SERVIZIO:</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" COLSPAN="3"><asp:label id="lblServizio" runat="server"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px"><SPAN>STD.APPARECCHIATURA:</SPAN></TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" COLSPAN="3">
+													<asp:label id="lblEqStd" runat="server" Width="192px"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px"><SPAN> APPARECCHIATURA:</SPAN></TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" colSpan="3">
+													<asp:label id="lblEqId" runat="server" Width="200px"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">TIPO ATTIVITA':</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" colSpan="3">
+													<asp:label id="lbsettore" runat="server"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">PROBLEMA:</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" colSpan="3"><asp:label id="LblEffetto" runat="server" Width="656px"></asp:label></TD>
+											</TR>
+											<TR>
+												<TD style="WIDTH: 216px; HEIGHT: 13px">CAUSA PRESUNTA GUASTO/ANOMALIA:</TD>
+												<TD style="WIDTH: 216px; HEIGHT: 13px" COLSPAN="3"><INPUT style="WIDTH: 8px; HEIGHT: 18px" id="Hidden1" size="1" type="hidden" name="HidTipInter"
+														runat="server">
+													<asp:label id="LblAnomalia" runat="server" Width="544px"></asp:label></TD>
+											</TR>
+										</TABLE>
+									</DIV>
+								</td>
+							</TR>
+						</table>
+						<DIV></DIV>
+					</td>
+				</tr>
+				<TR>
+					<TD style="HEIGHT: 1%" vAlign="top" width="10%" colSpan="2" align="left">
+						<TABLE id="Table1" border="0" cellSpacing="1" cellPadding="1" width="100%">
+							<TR>
+								<TD><cc1:s_button id="btnsNuova" tabIndex="2" runat="server" Text="Crea Altra Richiesta"></cc1:s_button></TD>
+								<TD><cc1:s_button id="cmdApprova" runat="server" Text="Approva ed Emetti"></cc1:s_button></TD>
+								<TD><cc1:s_button id="btnModificaRDL" runat="server" Text="Modifica RDL"></cc1:s_button></TD>
+								<TD></TD>
+								<TD style="DISPLAY:none"><INPUT id="btstampa" onclick="Stampa();" value="Stampa" type="button"></TD>
+							</TR>
+						</TABLE>
+						<asp:textbox id="txtWrHidden" runat="server" Visible="False"></asp:textbox><INPUT style="WIDTH: 16px; HEIGHT: 18px" id="hidprog" size="1" type="hidden" name="hidBl_id"
+							runat="server">
+						<asp:label id="lblrepeat" runat="server" Visible="False"></asp:label>
+					</TD>
+				</TR>
+				<TR>
+					<TD style="HEIGHT: 1%" vAlign="top" colSpan="2" align="left"><hr SIZE="1" noShade>
+					</TD>
+				</TR>
+			</TABLE>
+			</TD></TR></TABLE></form>
+		<script language="javascript">parent.left.calcola();</script>
+	</body>
+</HTML>
